@@ -1,1 +1,1 @@
-# Weni_Capstone_Proejct
+# Weni_Capstone_Project
