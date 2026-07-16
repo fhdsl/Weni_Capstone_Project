@@ -1,9 +1,10 @@
 
 
-GeneExpression = function(genename) { 
-  row_info <- as.data.frame(rowData(data_se))
+SingleGeneSurvivalAnalysis = function(genename, summarized_experiment, normalized_expression) { 
+  clinical <- as.data.frame(colData(summarized_experiment))
+  row_info <- as.data.frame(rowData(summarized_experiment))
   target_row <- rownames(row_info[row_info$gene_name == genename, ])
-  gene_expr <- expression[target_row, ]
+  gene_expr <- normalized_expression[target_row, ]
   gene_name_expr = paste(genename, "_expr", sep = "")
   gene_name_group = paste(genename, "_group", sep = "")
   clinical[[gene_name_expr]] <- as.numeric(gene_expr[match(clinical$barcode, names(gene_expr))])
